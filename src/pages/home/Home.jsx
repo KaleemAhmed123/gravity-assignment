@@ -126,7 +126,7 @@ const Home = () => {
             ))}
 
             <button className="addway" onClick={handleAddWaypoint}>
-              Add another stop
+              ➕ Add another stop
             </button>
 
             <button className="btn-cta" onClick={handleDirectionsRequest}>
@@ -149,6 +149,7 @@ const Home = () => {
           </div>
 
           <div className="right">
+            {/* {!directions && <img src={map} alt="" />} */}
             {directions && (
               <div>
                 <GoogleMap
