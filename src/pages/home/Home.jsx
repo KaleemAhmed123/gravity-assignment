@@ -22,6 +22,11 @@ const mapOptions = {
   zoomControl: true,
 };
 
+const centerInit = {
+  lat: 19.07609,
+  lng: 72.877426,
+};
+
 const Home = () => {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
@@ -149,7 +154,6 @@ const Home = () => {
           </div>
 
           <div className="right">
-            {/* {!directions && <img src={map} alt="" />} */}
             {directions && (
               <div>
                 <GoogleMap
