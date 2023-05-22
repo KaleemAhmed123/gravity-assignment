@@ -30,7 +30,7 @@ const centerInit = {
 const Home = () => {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
-  const [waypoints, setWaypoints] = useState([""]);
+  const [waypoints, setWaypoints] = useState([]);
   const [directions, setDirections] = useState(null);
   const [distance, setDistance] = useState(null);
 
