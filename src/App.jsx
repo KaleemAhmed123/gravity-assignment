@@ -4,8 +4,8 @@ import Home from "./pages/home/Home";
 const App = () => {
   return (
     <div>
+      <h1>some changes in h1</h1>
       <Home />
-      some changes
     </div>
   );
 };
