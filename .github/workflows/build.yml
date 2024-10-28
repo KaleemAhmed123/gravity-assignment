@@ -29,8 +29,14 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Verify build folder exists
+        run: ls -la build
+
+      - name: Move build to src folder
+        run: mv build src/
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: dist/
+          path: build/  
