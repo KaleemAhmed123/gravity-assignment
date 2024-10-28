@@ -24,20 +24,20 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # if assets is created
-      - name: List dist folder
-        run: ls -R dist
+      # if 'assets' is created
+      - name: List build folder
+        run: ls -R build
 
-      - name: Commit and Push dist/assets
+      - name: Commit and Push build/assets
         run: |
-          if [ -d dist/assets ]; then
+          if [ -d build/assets ]; then
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add dist/assets
+            git add build/assets
             git commit -m "CI: Update build assets [skip ci]"
             git push origin main
           else
-            echo "dist/assets folder not found"
+            echo "build/assets folder not found"
             exit 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
