@@ -1,14 +1,9 @@
-name: Build and Deploy
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-permissions:
-  contents: write
 
 jobs:
   build:
@@ -21,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '16'
 
       - name: Install dependencies
         run: npm ci
@@ -29,14 +24,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Verify build folder exists
-        run: ls -la build
-
-      - name: Move build to src folder
-        run: mv build src/
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: build/  
+        # just bot config
+      - name: Commit and Push dist/assets
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/assets  # Stage the 'dist/assets' folder
+          git commit -m "CI: Update build assets [skip ci]"
+          git push origin main  # Push the changes to the 'main' branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
