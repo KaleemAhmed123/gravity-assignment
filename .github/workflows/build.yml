@@ -24,7 +24,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # if 'assets' is created
       - name: List build folder
         run: ls -R build
 
@@ -39,5 +38,6 @@ jobs:
           else
             echo "build/assets folder not found"
             exit 1
+          fi # Ensure this 'fi' closes the 'if' statement
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
